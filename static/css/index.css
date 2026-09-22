@@ -155,3 +155,371 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+/* ========== ZoomDiff Specific Styles ========== */
+
+/* Teaser: 3 videos in a row (desktop), wraps on mobile */
+.zd-teaser-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  align-items: stretch;
+}
+
+.zd-teaser-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.zd-teaser-item video {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: block;
+}
+
+.zd-teaser-caption {
+  margin-top: 16px;
+  font-size: 18px;
+  font-style: italic;
+  color: #444;
+}
+
+@media (max-width: 768px) {
+  .zd-teaser-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Qualitative case layout: UW | ZoomDiff Video | W */
+.zd-case-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 14px;
+  text-align: center;
+  color: #333;
+}
+
+.zd-case-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 14px;
+  width: 100%;
+  align-items: center;
+}
+
+.zd-case-item {
+  text-align: center;
+}
+
+.zd-case-item img,
+.zd-case-item video {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+  display: block;
+}
+
+.zd-case-label {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+}
+
+.zd-subsection-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  color: #222;
+}
+
+@media (max-width: 768px) {
+  .zd-case-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* Comparison grid */
+.zd-comp-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 14px;
+  text-align: center;
+  color: #333;
+}
+
+.zd-comp-grid {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  align-items: start;
+}
+
+.zd-comp-grid.cols-6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.zd-comp-grid.cols-7 {
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.zd-comp-item {
+  text-align: center;
+}
+
+.zd-comp-item img,
+.zd-comp-item video {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+}
+
+.zd-comp-label {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #555;
+  font-weight: 600;
+}
+
+.zd-comp-zoomdiff .zd-comp-label {
+  font-weight: 900;
+  color: #111;
+  font-size: 14px;
+}
+
+.zd-comp-zoomdiff video {
+  outline: 2px solid #3273dc;
+  outline-offset: 1px;
+}
+
+@media (max-width: 1024px) {
+  .zd-comp-grid.cols-6 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .zd-comp-grid.cols-7 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .zd-comp-grid.cols-6,
+  .zd-comp-grid.cols-7 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ========== ZoomDiff Compact Qualitative Cards (2-col grid) ========== */
+
+.zd-qual-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 28px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.zd-qual-card {
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 10px;
+  padding: 16px 16px 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.zd-qual-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.zd-qual-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #222;
+}
+
+.zd-qual-card-badges {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.zd-qual-card-category,
+.zd-qual-card-difficulty {
+  font-size: 12px;
+  padding: 2px 9px;
+  border-radius: 10px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.zd-qual-card-category {
+  color: #fff;
+}
+
+.zd-qual-card-category.real { background: #7957d5; }
+.zd-qual-card-category.synthetic { background: #00897b; }
+
+.zd-qual-card-difficulty {
+  color: #fff;
+}
+
+.zd-qual-card-difficulty.simple { background: #48c774; }
+.zd-qual-card-difficulty.moderate { background: #3298dc; }
+.zd-qual-card-difficulty.hard { background: #f14668; }
+
+.zd-qual-card-mainvideo {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  line-height: 0;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.zd-qual-card-mainvideo video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.zd-qual-card-refs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.zd-qual-card-ref {
+  text-align: center;
+}
+
+.zd-qual-card-ref img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+.zd-qual-card-ref-label {
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+}
+
+@media (max-width: 860px) {
+  .zd-qual-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* ========== ZoomDiff Method Figure (Nerfies-style compact academic layout) ========== */
+
+.zd-method-figure-wrapper {
+  width: 100%;
+  margin: 18px 0 4px;
+  text-align: center;
+}
+
+.zd-method-figure-link {
+  display: block;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.zd-method-figure-link:hover,
+.zd-method-figure-link:active,
+.zd-method-figure-link:focus {
+  color: inherit;
+  text-decoration: none;
+}
+
+.zd-method-figure-object {
+  width: 100%;
+  max-width: 100%;
+  height: 720px;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  display: block;
+  margin: 0 auto;
+}
+
+/* Fallback box shown when the browser refuses to render PDF inline. */
+.zd-method-figure-fallback {
+  width: 100%;
+  height: 420px;
+  background: #fafafa;
+  border: 1px dashed #d4d4d4;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #7a7a7a;
+  font-size: 15px;
+  font-weight: 600;
+  gap: 6px;
+}
+
+.zd-method-figure-fallback i {
+  font-size: 56px;
+  color: #b5b5b5;
+  margin-bottom: 8px;
+}
+
+.zd-method-figure-caption {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #666;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .zd-method-figure-object {
+    height: 620px;
+  }
+}
+
+@media (max-width: 768px) {
+  .zd-method-figure-object {
+    height: 520px;
+  }
+  .zd-method-figure-fallback {
+    height: 320px;
+  }
+}
+
+@media (max-width: 520px) {
+  .zd-method-figure-object {
+    height: 440px;
+  }
+}

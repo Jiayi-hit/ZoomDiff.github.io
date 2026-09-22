@@ -1,2 +1,10 @@
 .DS_store
 .idea
+# Local source materials
+Media_Supplement/
+
+# Intermediate HTML backups
+index copy*.html
+# Local paper figures
+static/images/method.pdf
+static/images/full_qual.pdf
