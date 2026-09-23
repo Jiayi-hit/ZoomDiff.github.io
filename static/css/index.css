@@ -545,3 +545,85 @@ body {
     height: 440px;
   }
 }
+
+/* ========== ZoomDiff Hero Publication Links: Code · Coming Soon Button (non-clickable) ========== */
+
+/* Parent button: reuses Bulma .button / .is-normal / .is-rounded, only tweaks to hint "disabled".
+   Kept intentionally close to the arXiv .is-dark button in height/padding so the two align. */
+.zd-btn-coming-soon {
+  color: #f5f5f5;
+  background: #555;
+  border-color: #555;
+  cursor: not-allowed;
+  opacity: 0.88;
+  /* Re-enable default disabled-button hover so Bulma's disabled behavior doesn't reset to black-on-black;
+     we explicitly re-set hover/active to the same values to avoid any underline/flicker. */
+  transition: none;
+  padding-left: 0.9em;
+  padding-right: 0.9em;
+  /* Make the button text block (incl. icon + "Code" + pill badge) vertically centered */
+  align-items: center;
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.zd-btn-coming-soon:hover,
+.zd-btn-coming-soon:focus,
+.zd-btn-coming-soon:active {
+  color: #f5f5f5;
+  background: #555;
+  border-color: #555;
+  cursor: not-allowed;
+  box-shadow: none;
+  outline: none;
+  transform: none;
+  text-decoration: none;
+}
+
+/* Tooltip title (native) already available; we additionally suppress any Bulma disabled underline */
+.zd-btn-coming-soon[disabled] {
+  cursor: not-allowed;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* Middle dot separator between "Code" and "Coming Soon" badge */
+.zd-btn-coming-soon-sep {
+  opacity: 0.75;
+  margin: 0 2px 0 6px;
+  font-weight: 700;
+  color: #ddd;
+  /* Small vertical alignment tweak for the dot */
+  margin-top: -1px;
+  line-height: 1;
+}
+
+/* "Coming Soon" pill badge inside the button — visually lightweight but immediately readable. */
+.zd-btn-coming-soon-badge {
+  display: inline-block;
+  padding: 1px 7px 2px;
+  font-size: 11px;
+  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: #fff;
+  background: #48c774;  /* Bulma green: neutral "coming soon" signal, not red error, not blue link */
+  border-radius: 999px;
+  margin-left: 2px;
+  white-space: nowrap;
+}
+
+/* Mobile: if the button wraps we want the icon + "Code" + badge to still center nicely,
+   and keep padding symmetric to avoid horizontal overflow on narrow phones. */
+@media (max-width: 520px) {
+  .zd-btn-coming-soon {
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    font-size: 0.92rem;
+  }
+  .zd-btn-coming-soon-badge {
+    padding: 1px 6px 2px;
+    font-size: 10px;
+  }
+}

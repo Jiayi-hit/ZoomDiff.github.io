@@ -36,7 +36,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <!-- <link rel="stylesheet" href="./static/css/index.css"> -->
-   <link rel="stylesheet" href="./static/css/index.css?v=20260924">
+   <link rel="stylesheet" href="./static/css/index.css?v=20260924b">
   <link rel="icon" href="./static/images/favicon.svg">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -135,6 +135,20 @@
                   </span>
                   <span>arXiv</span>
                 </a>
+              </span>
+              <!-- Code Link (Coming Soon — intentionally NOT clickable until open-sourced). -->
+              <!-- Uses <button disabled> instead of <a href="#"> so no dead link / no false expectation. -->
+              <span class="link-block">
+                <button type="button" disabled
+                        class="button is-normal is-rounded zd-btn-coming-soon"
+                        title="Code will be publicly released upon acceptance / publication.">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  <span class="zd-btn-coming-soon-sep" aria-hidden="true">&middot;</span>
+                  <span class="zd-btn-coming-soon-badge">Coming&nbsp;Soon</span>
+                </button>
               </span>
               <!-- Code Link. (Hidden until code is open-sourced and a valid repo link is available) -->
               <!--
