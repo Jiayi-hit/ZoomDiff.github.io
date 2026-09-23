@@ -549,19 +549,25 @@ body {
 /* ========== ZoomDiff Hero Publication Links: Code · Coming Soon Button (non-clickable) ========== */
 
 /* Parent button: reuses Bulma .button / .is-normal / .is-rounded, only tweaks to hint "disabled".
-   Kept intentionally close to the arXiv .is-dark button in height/padding so the two align. */
+   Kept intentionally close to the arXiv .is-dark button in height/padding so the two align.
+
+   VISUAL FIX (2026-09-23):
+   - Previoulsy had opacity:0.88 AND Bulma default .button[disabled] enforces opacity:0.5,
+     making the button near-invisible on default state.
+   - Now we use a light-grey background + dark-grey text/icon to act as a CLEARLY-VISIBLE
+     secondary button (vs arXiv's dark primary). We EXPLICITLY set opacity:1 on :disabled
+     to override Bulma's built-in fadeout. The disabled-ness is conveyed via cursor +
+     tooltip + not-allowed cursor + green "Coming Soon" badge, NOT via fading the button.
+*/
 .zd-btn-coming-soon {
-  color: #f5f5f5;
-  background: #555;
-  border-color: #555;
+  color: #333;                              /* deep grey text (GitHub icon + "Code") — WCAG AA on any bg */
+  background: #f3f3f3;                      /* light grey (near-white) card-ish background */
+  border-color: #dcdcdc;                    /* subtle border so button outline is visible on white hero */
   cursor: not-allowed;
-  opacity: 0.88;
-  /* Re-enable default disabled-button hover so Bulma's disabled behavior doesn't reset to black-on-black;
-     we explicitly re-set hover/active to the same values to avoid any underline/flicker. */
-  transition: none;
+  opacity: 1;                               /* NO transparency — button MUST be readable by default */
+  transition: background .15s ease, border-color .15s ease;   /* only subtle hover transition, no pop-in */
   padding-left: 0.9em;
   padding-right: 0.9em;
-  /* Make the button text block (incl. icon + "Code" + pill badge) vertically centered */
   align-items: center;
   display: inline-flex;
   white-space: nowrap;
@@ -570,9 +576,9 @@ body {
 .zd-btn-coming-soon:hover,
 .zd-btn-coming-soon:focus,
 .zd-btn-coming-soon:active {
-  color: #f5f5f5;
-  background: #555;
-  border-color: #555;
+  color: #333;                              /* never change text color on hover */
+  background: #ececec;                      /* ONLY slightly darker on hover (per req #6) */
+  border-color: #d2d2d2;
   cursor: not-allowed;
   box-shadow: none;
   outline: none;
@@ -580,26 +586,31 @@ body {
   text-decoration: none;
 }
 
-/* Tooltip title (native) already available; we additionally suppress any Bulma disabled underline */
+/* Tooltip title (native) already available; we additionally suppress any Bulma disabled underline
+   and MOST IMPORTANTLY OVERRIDE Bulma's built-in opacity:0.5 for disabled buttons. */
 .zd-btn-coming-soon[disabled] {
   cursor: not-allowed;
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
+  opacity: 1 !important;                    /* Force override Bulma .button[disabled]{opacity:0.5 !important} */
+  background: #f3f3f3;
+  border-color: #dcdcdc;
+  color: #333;
+  box-shadow: none;
 }
 
-/* Middle dot separator between "Code" and "Coming Soon" badge */
+/* Middle dot separator between "Code" and "Coming Soon" badge — on light bg use a dark mid-grey */
 .zd-btn-coming-soon-sep {
-  opacity: 0.75;
+  /* opacity: 0.75; */                      /* removed — let color itself be the control for readability */
   margin: 0 2px 0 6px;
   font-weight: 700;
-  color: #ddd;
-  /* Small vertical alignment tweak for the dot */
+  color: #888;                              /* mid grey, visible but lighter than #333 Code text */
   margin-top: -1px;
   line-height: 1;
 }
 
-/* "Coming Soon" pill badge inside the button — visually lightweight but immediately readable. */
+/* "Coming Soon" pill badge inside the button — keep existing Bulma-green style (unchanged per req #3) */
 .zd-btn-coming-soon-badge {
   display: inline-block;
   padding: 1px 7px 2px;
@@ -608,7 +619,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.2px;
   color: #fff;
-  background: #48c774;  /* Bulma green: neutral "coming soon" signal, not red error, not blue link */
+  background: #48c774;
   border-radius: 999px;
   margin-left: 2px;
   white-space: nowrap;
